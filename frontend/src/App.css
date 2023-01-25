@@ -18,6 +18,11 @@ main {
   gap: 2rem;
 }
 
+.card-link {
+  text-decoration: none;
+  color: initial;
+}
+
 .card {
   /* REMOVE THIS CLASS LATER */
   margin-top: 1rem;
