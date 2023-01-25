@@ -2,30 +2,26 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import CompanyList from "./CompanyList";
-import Company from "./CompanyDetail";
+import CompanyDetail from "./CompanyDetail";
 import JobList from "./JobList";
 import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
-import JobCard from "./JobCard";
 
-const Routes = () => {
+const Routes = ({ companies, jobs }) => {
   return (
     <Switch>
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/companies">
-        <CompanyList />
+      <Route exact path="/companies">
+        <CompanyList companies={companies} />
       </Route>
-      <Route path="/companies/:company">
-        <Company />
+      <Route path="/companies/:handle">
+        <CompanyDetail />
       </Route>
-      <Route path="/jobs">
-        <JobList />
-      </Route>
-      <Route path="/jobs/:job">
-        <JobCard />
+      <Route exact path="/jobs">
+        <JobList jobs={jobs} />
       </Route>
       <Route path="/login">
         <Login />
