@@ -1,13 +1,13 @@
 import React from "react";
 
-const CompanyCard = () => {
+const CompanyCard = ({ name, description, logoUrl }) => {
   return (
     <div className="CompanyCard card">
       <div>
-        <h3>Company Name</h3>
-        <p>Text about the company</p>
+        <h3>{name}</h3>
+        <p>{description}</p>
       </div>
-      <img alt="Company Logo" />
+      <img alt={`${name} Logo`} src={logoUrl} />
     </div>
   );
 };

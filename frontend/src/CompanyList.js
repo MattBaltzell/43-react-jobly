@@ -3,20 +3,24 @@ import Search from "./Search";
 import CompanyCard from "./CompanyCard";
 import { Link } from "react-router-dom";
 
-const CompanyList = () => {
+const CompanyList = ({ companies }) => {
   return (
     <main className="CompanyList">
       <Search />
       <div className="CompanyList-list">
-        <Link to="/companies">
-          <CompanyCard />
-        </Link>
-        <Link to="/companies">
-          <CompanyCard />
-        </Link>
-        <Link to="/companies">
-          <CompanyCard />
-        </Link>
+        {companies.map(company => (
+          <Link
+            className="card-link"
+            key={company.handle}
+            to={`/companies/${company.handle}`}
+          >
+            <CompanyCard
+              name={company.name}
+              description={company.description}
+              logo={company.logoUrl}
+            />
+          </Link>
+        ))}
       </div>
     </main>
   );
