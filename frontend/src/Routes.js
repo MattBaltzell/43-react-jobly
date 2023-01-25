@@ -2,9 +2,12 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import CompanyList from "./CompanyList";
-import Company from "./Company";
+import Company from "./CompanyDetail";
 import JobList from "./JobList";
-import Job from "./Job";
+import Login from "./Login";
+import Signup from "./Signup";
+import Profile from "./Profile";
+import JobCard from "./JobCard";
 
 const Routes = () => {
   return (
@@ -22,16 +25,16 @@ const Routes = () => {
         <JobList />
       </Route>
       <Route path="/jobs/:job">
-        <Job />
+        <JobCard />
       </Route>
       <Route path="/login">
-        <h1>Login</h1>
+        <Login />
       </Route>
       <Route path="/signup">
-        <h1>Sign up Form</h1>
+        <Signup />
       </Route>
       <Route path="/profile">
-        <h1>Profile</h1>
+        <Profile />
       </Route>
     </Switch>
   );
