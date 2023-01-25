@@ -5,7 +5,7 @@ import JobCard from "./JobCard";
 const JobList = ({ jobs }) => {
   return (
     <main className="JobList">
-      <Search />
+      <Search type="job" />
       <div className="JobList-list">
         {jobs.map(job => (
           <div key={job.id}>

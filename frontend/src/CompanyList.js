@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const CompanyList = ({ companies }) => {
   return (
     <main className="CompanyList">
-      <Search />
+      <Search type="company" />
       <div className="CompanyList-list">
         {companies.map(company => (
           <Link
