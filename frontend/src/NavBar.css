@@ -1,0 +1,31 @@
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: darkslateblue;
+}
+
+.NavBar a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s;
+}
+
+.NavBar a.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+.NavBar a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.NavBar-logo a {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.NavBar nav {
+  display: flex;
+  gap: 2rem;
+}
