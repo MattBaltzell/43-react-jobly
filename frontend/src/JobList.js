@@ -2,13 +2,17 @@ import React from "react";
 import Search from "./Search";
 import JobCard from "./JobCard";
 
-const JobList = () => {
+const JobList = ({ jobs }) => {
   return (
-    <main>
+    <main className="JobList">
       <Search />
-      <JobCard />
-      <JobCard />
-      <JobCard />
+      <div className="JobList-list">
+        {jobs.map(job => (
+          <div key={job.id}>
+            <JobCard job={job} />
+          </div>
+        ))}
+      </div>
     </main>
   );
 };

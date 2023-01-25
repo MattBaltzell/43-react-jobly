@@ -1,18 +1,18 @@
 import React from "react";
 
-const JobCard = () => {
+const JobCard = ({ job }) => {
   return (
     <div className="JobCard card">
       <div>
         <div>
-          <h3>Job Title</h3>
-          <p>company name</p>
+          <h3>{job.title}</h3>
+          {job.companyName && <p>{job.companyName}</p>}
         </div>
         <div>
-          <small>Salary: $$$$</small>
+          <small>Salary: {job.salary}</small>
         </div>
         <div>
-          <small>Equity: ###</small>
+          <small>Equity: {job.equity}</small>
         </div>
       </div>
       <button>Apply</button>
