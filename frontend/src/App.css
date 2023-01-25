@@ -27,3 +27,9 @@ main {
   /* REMOVE THIS CLASS LATER */
   margin-top: 1rem;
 }
+
+.card img {
+  width: 100%;
+  max-width: 8rem;
+  height: 8rem;
+}
