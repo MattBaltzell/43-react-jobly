@@ -42,9 +42,12 @@ class JoblyApi {
   }
 
   /** Get list of all companies. */
+  // Can filter companies by name
 
-  static async getAllCompanies() {
-    let res = await this.request("companies/");
+  static async getAllCompanies(filterTerm) {
+    let res = !filterTerm
+      ? await this.request("companies/")
+      : await this.request(`companies?name=${filterTerm}`);
     return res.companies;
   }
 
@@ -57,8 +60,11 @@ class JoblyApi {
 
   /** Get list of all jobs. */
 
-  static async getAllJobs() {
-    let res = await this.request("jobs/");
+  static async getAllJobs(filterTerm) {
+    let res = !filterTerm
+      ? await this.request("jobs/")
+      : await this.request(`jobs?title=${filterTerm}`);
+
     return res.jobs;
   }
 }

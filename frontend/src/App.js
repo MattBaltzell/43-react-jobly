@@ -8,26 +8,26 @@ function App() {
   const [companies, setCompanies] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filterTerm, setFilterTerm] = useState(undefined);
 
   useEffect(() => {
     const getCompanies = async () => {
-      const companies = await JoblyApi.getAllCompanies();
+      const companies = await JoblyApi.getAllCompanies(filterTerm);
       setCompanies(companies);
       setIsLoading(false);
     };
-
-    getCompanies();
-  }, []);
-
-  useEffect(() => {
     const getJobs = async () => {
-      const jobs = await JoblyApi.getAllJobs();
+      const jobs = await JoblyApi.getAllJobs(filterTerm);
       setJobs(jobs);
       setIsLoading(false);
     };
-
+    getCompanies();
     getJobs();
-  }, []);
+  }, [filterTerm]);
+
+  const filter = term => {
+    setFilterTerm(term);
+  };
 
   if (isLoading) {
     return (
@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Routes companies={companies} jobs={jobs} />
+      <Routes companies={companies} jobs={jobs} filter={filter} />
     </div>
   );
 }

@@ -8,20 +8,20 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
 
-const Routes = ({ companies, jobs }) => {
+const Routes = ({ companies, jobs, filter }) => {
   return (
     <Switch>
       <Route exact path="/">
         <Home />
       </Route>
       <Route exact path="/companies">
-        <CompanyList companies={companies} />
+        <CompanyList companies={companies} filter={filter} />
       </Route>
       <Route path="/companies/:handle">
         <CompanyDetail />
       </Route>
       <Route exact path="/jobs">
-        <JobList jobs={jobs} />
+        <JobList jobs={jobs} filter={filter} />
       </Route>
       <Route path="/login">
         <Login />
