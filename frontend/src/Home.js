@@ -16,7 +16,7 @@ const Home = () => {
           <Link to="/signup">Signup</Link>
         </p>
       ) : (
-        <h2>Welcome back, {user.username}!</h2>
+        <h2>Welcome back, {user.firstName}!</h2>
       )}
     </main>
   );
