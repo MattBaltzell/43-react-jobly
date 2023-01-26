@@ -1,11 +1,11 @@
 import React from "react";
 import SignupForm from "./SignupForm";
 
-const Signup = () => {
+const Signup = ({ signup }) => {
   return (
     <main>
       <h1>Sign Up</h1>
-      <SignupForm />
+      <SignupForm signup={signup} />
     </main>
   );
 };

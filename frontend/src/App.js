@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import JoblyApi from "./api";
 import UserContext from "./UserContext";
+import jwt from "jsonwebtoken";
 
 function App() {
   const [companies, setCompanies] = useState([]);
@@ -11,6 +12,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [filterTerm, setFilterTerm] = useState(undefined);
   const [currUser, setCurrUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const getCompanies = async () => {
@@ -31,9 +33,42 @@ function App() {
     setFilterTerm(term);
   };
 
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      if (token) {
+        try {
+          JoblyApi.token = token;
+          let { username } = jwt.decode(token);
+          const user = await JoblyApi.getUser(username);
+          setCurrUser(user);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    getCurrentUser();
+  }, [token]);
+
   const login = async ({ username, password }) => {
-    const user = await JoblyApi.login(username, password);
-    setCurrUser(user);
+    const token = await JoblyApi.login(username, password);
+    setToken(token);
+  };
+
+  const signup = async ({ username, password, firstName, lastName, email }) => {
+    const token = await JoblyApi.signup(
+      username,
+      password,
+      firstName,
+      lastName,
+      email
+    );
+    setToken(token);
+  };
+
+  const logout = async () => {
+    setToken(null);
+    setCurrUser(null);
+    JoblyApi.token = null;
   };
 
   if (isLoading) {
@@ -47,12 +82,13 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={currUser}>
-        <NavBar />
+        <NavBar logout={logout} />
         <Routes
           companies={companies}
           jobs={jobs}
           filter={filter}
           login={login}
+          signup={signup}
         />
       </UserContext.Provider>
     </div>

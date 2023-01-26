@@ -8,7 +8,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
 
-const Routes = ({ companies, jobs, filter, login }) => {
+const Routes = ({ companies, jobs, filter, login, signup }) => {
   return (
     <Switch>
       <Route exact path="/">
@@ -27,7 +27,7 @@ const Routes = ({ companies, jobs, filter, login }) => {
         <Login login={login} />
       </Route>
       <Route path="/signup">
-        <Signup />
+        <Signup signup={signup} />
       </Route>
       <Route path="/profile">
         <Profile />
