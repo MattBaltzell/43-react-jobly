@@ -41,8 +41,10 @@ class JoblyApi {
     return res.company;
   }
 
-  /** Get list of all companies. */
-  // Can filter companies by name
+  /**
+   * Get list of all companies.
+   * - Can filter companies by name
+   */
 
   static async getAllCompanies(filterTerm) {
     let res = !filterTerm
@@ -58,7 +60,10 @@ class JoblyApi {
     return res.job;
   }
 
-  /** Get list of all jobs. */
+  /**
+   * Get list of all jobs.
+   * - Can filter jobs by title
+   * */
 
   static async getAllJobs(filterTerm) {
     let res = !filterTerm
