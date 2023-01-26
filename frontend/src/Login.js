@@ -1,11 +1,11 @@
 import React from "react";
 import LoginForm from "./LoginForm";
 
-const Login = () => {
+const Login = ({ login }) => {
   return (
     <main>
       <h1>Login</h1>
-      <LoginForm />
+      <LoginForm login={login} />
     </main>
   );
 };

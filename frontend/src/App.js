@@ -3,12 +3,14 @@ import "./App.css";
 import NavBar from "./NavBar";
 import Routes from "./Routes";
 import JoblyApi from "./api";
+import UserContext from "./UserContext";
 
 function App() {
   const [companies, setCompanies] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [filterTerm, setFilterTerm] = useState(undefined);
+  const [currUser, setCurrUser] = useState(null);
 
   useEffect(() => {
     const getCompanies = async () => {
@@ -29,6 +31,11 @@ function App() {
     setFilterTerm(term);
   };
 
+  const login = async ({ username, password }) => {
+    const user = await JoblyApi.login(username, password);
+    setCurrUser(user);
+  };
+
   if (isLoading) {
     return (
       <main>
@@ -39,8 +46,15 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
-      <Routes companies={companies} jobs={jobs} filter={filter} />
+      <UserContext.Provider value={currUser}>
+        <NavBar />
+        <Routes
+          companies={companies}
+          jobs={jobs}
+          filter={filter}
+          login={login}
+        />
+      </UserContext.Provider>
     </div>
   );
 }
