@@ -10,7 +10,6 @@ function App() {
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("jobly-token"));
   const [userWasUpdated, setUserWasUpdated] = useState(false);
-  
 
   useEffect(() => {
     const getCurrUser = async () => {
@@ -70,6 +69,7 @@ function App() {
     try {
       await JoblyApi.updateUserProfile(data);
       setUserWasUpdated(true);
+      return { message: "Updated successfully." };
     } catch (error) {
       return { message: error };
     }

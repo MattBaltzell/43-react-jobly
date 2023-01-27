@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import useFormFields from "../hooks/useFormFields";
 import UserContext from "../auth/UserContext";
 import "../auth/Form.css";
 
 const UpdateProfileForm = ({ update }) => {
   const { username, firstName, lastName, email } = useContext(UserContext);
+
+  const [submitMsg, setSubmitMsg] = useState("");
 
   const { formData, handleChange } = useFormFields({
     username,
@@ -13,9 +15,10 @@ const UpdateProfileForm = ({ update }) => {
     email
   });
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    update(formData);
+    const { message } = await update(formData);
+    setSubmitMsg(message);
   };
 
   return (
@@ -59,6 +62,17 @@ const UpdateProfileForm = ({ update }) => {
           placeholder="actual email"
           value={formData.email}
         />
+        {!submitMsg ? (
+          <></>
+        ) : (
+          <div
+            className={`status-msg ${
+              submitMsg === "Updated successfully." ? "success" : "error"
+            }`}
+          >
+            {submitMsg}
+          </div>
+        )}
         <button type="submit">Save Changes</button>
       </form>
     </main>

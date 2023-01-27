@@ -75,3 +75,19 @@ main {
   background-color: rgb(158, 208, 241);
   cursor: default;
 }
+
+.status-msg {
+  background-color: #ccc;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.status-msg.success {
+  background-color: rgb(172, 235, 180);
+}
+
+.status-msg.error {
+  background-color: rgb(243, 148, 148);
+}
