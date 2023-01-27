@@ -4,8 +4,8 @@ import Home from "./Home";
 import CompanyList from "./CompanyList";
 import CompanyDetail from "./CompanyDetail";
 import JobList from "./JobList";
-import Login from "./Login";
-import Signup from "./Signup";
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 import Profile from "./Profile";
 
 const Routes = ({ companies, jobs, filter, login, signup }) => {
@@ -24,10 +24,10 @@ const Routes = ({ companies, jobs, filter, login, signup }) => {
         <JobList jobs={jobs} filter={filter} />
       </Route>
       <Route path="/login">
-        <Login login={login} />
+        <LoginForm login={login} />
       </Route>
       <Route path="/signup">
-        <Signup signup={signup} />
+        <SignupForm signup={signup} />
       </Route>
       <Route path="/profile">
         <Profile />
