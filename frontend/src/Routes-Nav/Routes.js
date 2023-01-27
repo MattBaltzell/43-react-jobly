@@ -1,12 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Home from "./Home";
-import CompanyList from "./CompanyList";
-import CompanyDetail from "./CompanyDetail";
-import JobList from "./JobList";
-import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
-import Profile from "./Profile";
+import Home from "../Home";
+import CompanyList from "../Company/CompanyList";
+import CompanyDetail from "../Company/CompanyDetail";
+import JobList from "../Job/JobList";
+import LoginForm from "../User/LoginForm";
+import SignupForm from "../User/SignupForm";
+import UpdateProfileForm from "../User/UpdateProfileForm";
 
 const Routes = ({ companies, jobs, filter, login, signup }) => {
   return (
@@ -30,7 +30,7 @@ const Routes = ({ companies, jobs, filter, login, signup }) => {
         <SignupForm signup={signup} />
       </Route>
       <Route path="/profile">
-        <Profile />
+        <UpdateProfileForm />
       </Route>
     </Switch>
   );

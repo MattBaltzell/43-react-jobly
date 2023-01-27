@@ -1,5 +1,5 @@
 import React from "react";
-import useFormFields from "./hooks/useFormFields";
+import useFormFields from "../hooks/useFormFields";
 import { useHistory } from "react-router-dom";
 
 const LoginForm = ({ login }) => {

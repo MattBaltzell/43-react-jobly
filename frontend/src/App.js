@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import NavBar from "./NavBar";
-import Routes from "./Routes";
-import JoblyApi from "./api";
-import UserContext from "./UserContext";
+import NavBar from "./Routes-Nav/NavBar";
+import Routes from "./Routes-Nav/Routes";
+import JoblyApi from "./Api/api";
+import UserContext from "./User/UserContext";
 import jwt from "jsonwebtoken";
 
 function App() {
