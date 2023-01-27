@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component tests matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div
+      class="NavBar"
+    >
+      <nav>
+        <div
+          class="NavBar-logo"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+          >
+            Jobly
+          </a>
+        </div>
+        <ul
+          class="NavBar-links"
+        >
+          <li>
+            <a
+              href="/login"
+            >
+              Login
+            </a>
+          </li>
+          <li>
+            <a
+              href="/signup"
+            >
+              Signup
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div
+      class="container"
+    >
+      <main
+        class="Home"
+      >
+        <h1>
+          Jobly
+        </h1>
+        <p>
+          All the jobs in one convenient place
+        </p>
+        <p>
+          <a
+            href="/login"
+          >
+            Login
+          </a>
+          <a
+            href="/signup"
+          >
+            Signup
+          </a>
+        </p>
+      </main>
+    </div>
+  </div>
+</DocumentFragment>
+`;

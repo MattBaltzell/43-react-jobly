@@ -1,9 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 
-it('renders without crashing', function() {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("App component tests", () => {
+  // smoke test
+  it("renders without crashing", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+  });
+
+  // snapshot test
+  it("matches snapshot", function() {
+    const { asFragment } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
