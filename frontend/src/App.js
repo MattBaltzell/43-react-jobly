@@ -34,19 +34,19 @@ function App() {
   };
 
   useEffect(() => {
-    const getCurrentUser = async () => {
+    const getCurrUser = async () => {
       if (token) {
         try {
           JoblyApi.token = token;
           let { username } = jwt.decode(token);
-          const user = await JoblyApi.getUser(username);
+          const user = await JoblyApi.getCurrentUser(username);
           setCurrUser(user);
         } catch (error) {
           console.log(error);
         }
       }
     };
-    getCurrentUser();
+    getCurrUser();
   }, [token]);
 
   const login = async ({ username, password }) => {
