@@ -28,26 +28,38 @@ function App() {
   }, [token]);
 
   const login = async ({ username, password }) => {
-    const token = await JoblyApi.login(username, password);
-    setToken(token);
+    try {
+      const token = await JoblyApi.login(username, password);
+      setToken(token);
+    } catch (error) {
+      return { message: error };
+    }
   };
 
   const signup = async ({ username, password, firstName, lastName, email }) => {
-    const token = await JoblyApi.signup(
-      username,
-      password,
-      firstName,
-      lastName,
-      email
-    );
-    setToken(token);
+    try {
+      const token = await JoblyApi.signup(
+        username,
+        password,
+        firstName,
+        lastName,
+        email
+      );
+      setToken(token);
+    } catch (error) {
+      return { message: error };
+    }
   };
 
   const logout = async () => {
-    setToken(null);
-    setCurrUser(null);
-    JoblyApi.token = null;
-    localStorage.setItem("jobly-token", "");
+    try {
+      setToken(null);
+      setCurrUser(null);
+      JoblyApi.token = null;
+      localStorage.setItem("jobly-token", "");
+    } catch (error) {
+      return { message: error };
+    }
   };
 
   return (
