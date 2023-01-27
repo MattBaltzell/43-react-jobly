@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("jobly-token"));
 
   useEffect(() => {
     const getCurrUser = async () => {
@@ -18,6 +18,7 @@ function App() {
           let { username } = jwt.decode(token);
           const user = await JoblyApi.getCurrentUser(username);
           setCurrUser(user);
+          localStorage.setItem("jobly-token", token);
         } catch (error) {
           console.log(error);
         }
@@ -46,6 +47,7 @@ function App() {
     setToken(null);
     setCurrUser(null);
     JoblyApi.token = null;
+    localStorage.setItem("jobly-token", "");
   };
 
   return (
