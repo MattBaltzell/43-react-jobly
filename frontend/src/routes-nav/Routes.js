@@ -1,27 +1,27 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Home from "../Home";
-import CompanyList from "../Company/CompanyList";
-import CompanyDetail from "../Company/CompanyDetail";
-import JobList from "../Job/JobList";
-import LoginForm from "../User/LoginForm";
-import SignupForm from "../User/SignupForm";
-import UpdateProfileForm from "../User/UpdateProfileForm";
+import Home from "../home/Home";
+import CompanyList from "../companies/CompanyList";
+import CompanyDetail from "../companies/CompanyDetail";
+import JobList from "../jobs/JobList";
+import LoginForm from "../auth/LoginForm";
+import SignupForm from "../auth/SignupForm";
+import UpdateProfileForm from "../profile/UpdateProfileForm";
 
-const Routes = ({ companies, jobs, filter, login, signup }) => {
+const Routes = ({ login, signup }) => {
   return (
     <Switch>
       <Route exact path="/">
         <Home />
       </Route>
       <Route exact path="/companies">
-        <CompanyList companies={companies} filter={filter} />
+        <CompanyList />
       </Route>
       <Route path="/companies/:handle">
         <CompanyDetail />
       </Route>
       <Route exact path="/jobs">
-        <JobList jobs={jobs} filter={filter} />
+        <JobList />
       </Route>
       <Route path="/login">
         <LoginForm login={login} />

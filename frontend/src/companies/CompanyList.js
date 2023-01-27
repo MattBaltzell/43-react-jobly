@@ -1,12 +1,37 @@
-import React from "react";
-import Search from "../Search";
+import React, { useState, useEffect } from "react";
+import Search from "../common/Search";
 import CompanyCard from "./CompanyCard";
 import { Link } from "react-router-dom";
+import JoblyApi from "../api/api";
 
-const CompanyList = ({ companies, filter }) => {
+const CompanyList = () => {
+  const [companies, setCompanies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const getCompanies = () => {
+      filter();
+      setIsLoading(false);
+    };
+
+    getCompanies();
+  }, []);
+
+  async function filter(term) {
+    let companies = await JoblyApi.getAllCompanies(term);
+    setCompanies(companies);
+  }
+
+  if (isLoading) {
+    return (
+      <main>
+        <h1>Loading...</h1>
+      </main>
+    );
+  }
   return (
     <main className="CompanyList">
-      <Search type="company" filter={filter} />
+      <Search filter={filter} />
 
       {companies.length === 0 ? (
         <p>No Results</p>
