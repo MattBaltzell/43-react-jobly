@@ -5,11 +5,11 @@ import "./Form.css";
 
 const SignupForm = ({ signup }) => {
   const INITIAL_STATE = {
-    username: "testuser",
-    password: "password",
-    firstName: "first1",
-    lastName: "last1",
-    email: "testuser1@test.com"
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: ""
   };
   const { formData, setFormData, handleChange } = useFormFields(INITIAL_STATE);
 
