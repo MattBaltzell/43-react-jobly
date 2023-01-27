@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "../home/Home";
 import CompanyList from "../companies/CompanyList";
 import CompanyDetail from "../companies/CompanyDetail";
@@ -7,6 +7,7 @@ import JobList from "../jobs/JobList";
 import LoginForm from "../auth/LoginForm";
 import SignupForm from "../auth/SignupForm";
 import UpdateProfileForm from "../profile/UpdateProfileForm";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = ({ login, signup }) => {
   return (
@@ -14,24 +15,25 @@ const Routes = ({ login, signup }) => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/companies">
-        <CompanyList />
-      </Route>
-      <Route path="/companies/:handle">
-        <CompanyDetail />
-      </Route>
-      <Route exact path="/jobs">
-        <JobList />
-      </Route>
       <Route path="/login">
         <LoginForm login={login} />
       </Route>
       <Route path="/signup">
         <SignupForm signup={signup} />
       </Route>
-      <Route path="/profile">
+      <PrivateRoute exact path="/companies">
+        <CompanyList />
+      </PrivateRoute>
+      <PrivateRoute path="/companies/:handle">
+        <CompanyDetail />
+      </PrivateRoute>
+      <PrivateRoute exact path="/jobs">
+        <JobList />
+      </PrivateRoute>
+      <PrivateRoute path="/profile">
         <UpdateProfileForm />
-      </Route>
+      </PrivateRoute>
+      <Redirect to="/" />
     </Switch>
   );
 };
