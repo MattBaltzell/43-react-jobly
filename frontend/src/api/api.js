@@ -34,7 +34,58 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Get details on a company by handle. */
+  //////////////////////////////////////////////////////
+  // USER ROUTES
+
+  /**
+   * Get details on a user by username.
+   * */
+
+  static async getCurrentUser(username) {
+    const res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
+  /**
+   * Update a user's profile by username
+   * - data includes: firstName, lastName, email
+   * */
+
+  static async updateUserProfile({ username, ...data }) {
+    const res = await this.request(`users/${username}`, data, "PATCH");
+    console.log(data);
+    return res.user;
+  }
+
+  //////////////////////////////////////////////////////
+  // AUTH ROUTES
+
+  /**
+   * Log a user in
+   * - data includes: username, password
+   * */
+
+  static async login(data) {
+    const res = await this.request("auth/token", data, "POST");
+    return res.token;
+  }
+
+  /**
+   * Sign a user up
+   * - data includes: username, password, firstName, lastName, email
+   * */
+
+  static async signup(data) {
+    const res = await this.request("auth/register", data, "POST");
+    return res.token;
+  }
+
+  //////////////////////////////////////////////////////
+  // COMPANY ROUTES
+
+  /**
+   * Get details on a company by handle.
+   * */
 
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
@@ -53,7 +104,12 @@ class JoblyApi {
     return res.companies;
   }
 
-  /** Get details on a job by id. */
+  //////////////////////////////////////////////////////
+  // JOB ROUTES
+
+  /**
+   * Get details on a job by id.
+   * */
 
   static async getJob(id) {
     let res = await this.request(`jobs/${id}`);
@@ -71,29 +127,6 @@ class JoblyApi {
       : await this.request(`jobs?title=${filterTerm}`);
 
     return res.jobs;
-  }
-
-  static async login(data) {
-    const res = await this.request("auth/token", data, "POST");
-    return res.token;
-  }
-
-  static async signup(data) {
-    const res = await this.request("auth/register", data, "POST");
-    return res.token;
-  }
-
-  /** Get details on a user by username. */
-
-  static async getCurrentUser(username) {
-    const res = await this.request(`users/${username}`);
-    return res.user;
-  }
-
-  static async updateUserProfile({ username, ...data }) {
-    const res = await this.request(`users/${username}`, data, "PATCH");
-    console.log(data);
-    return res.user;
   }
 }
 
