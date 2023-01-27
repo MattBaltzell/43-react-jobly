@@ -20,13 +20,13 @@ function App() {
           const user = await JoblyApi.getCurrentUser(username);
           setCurrUser(user);
           localStorage.setItem("jobly-token", token);
-          console.log("here");
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
     };
     getCurrUser();
+
     setUserWasUpdated(false);
   }, [token, userWasUpdated]);
 
@@ -74,11 +74,25 @@ function App() {
     }
   };
 
+  const apply = async data => {
+    try {
+      await JoblyApi.apply(data);
+      setUserWasUpdated(true);
+    } catch (error) {
+      return { message: error };
+    }
+  };
+
   return (
     <div className="App">
       <UserContext.Provider value={currUser}>
         <NavBar logout={logout} />
-        <Routes login={login} signup={signup} update={updateProfile} />
+        <Routes
+          login={login}
+          signup={signup}
+          update={updateProfile}
+          apply={apply}
+        />
       </UserContext.Provider>
     </div>
   );

@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 
-const JobCard = ({ job }) => {
+import UserContext from "../auth/UserContext";
+
+const JobCard = ({ job, apply }) => {
+  const { applications, username } = useContext(UserContext);
+
+  const handleClick = () => {
+    const id = job.id;
+    apply({ username, id });
+  };
+
   return (
     <div className="JobCard card">
       <div>
@@ -15,7 +24,12 @@ const JobCard = ({ job }) => {
           <small>Equity: {job.equity}</small>
         </div>
       </div>
-      <button>Apply</button>
+      <button
+        onClick={handleClick}
+        disabled={applications.some(app => app === job.id)}
+      >
+        Apply
+      </button>
     </div>
   );
 };

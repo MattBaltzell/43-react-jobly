@@ -47,13 +47,20 @@ class JoblyApi {
   }
 
   /**
+   * Add job to user's applications by username and jobId
+   * */
+  static async apply({ username, id }) {
+    const res = await this.request(`users/${username}/jobs/${id}`, {}, "post");
+    return res.applied;
+  }
+
+  /**
    * Update a user's profile by username
    * - data includes: firstName, lastName, email
    * */
 
   static async updateUserProfile({ username, ...data }) {
     const res = await this.request(`users/${username}`, data, "PATCH");
-    console.log(data);
     return res.user;
   }
 

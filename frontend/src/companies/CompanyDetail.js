@@ -4,7 +4,7 @@ import JoblyApi from "../api/api";
 
 import JobCard from "../jobs/JobCard";
 
-const CompanyDetail = () => {
+const CompanyDetail = ({ apply }) => {
   const { handle } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,7 @@ const CompanyDetail = () => {
       <div>
         {company.jobs.map(job => (
           <div key={job.id}>
-            <JobCard job={job} />
+            <JobCard job={job} apply={apply} />
           </div>
         ))}
       </div>

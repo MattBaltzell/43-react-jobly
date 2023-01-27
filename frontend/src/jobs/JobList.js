@@ -3,7 +3,7 @@ import Search from "../common/Search";
 import JobCard from "./JobCard";
 import JoblyApi from "../api/api";
 
-const JobList = () => {
+const JobList = ({ apply }) => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,7 +38,7 @@ const JobList = () => {
         <div className="JobList-list">
           {jobs.map(job => (
             <div key={job.id}>
-              <JobCard job={job} />
+              <JobCard job={job} apply={apply} />
             </div>
           ))}
         </div>
