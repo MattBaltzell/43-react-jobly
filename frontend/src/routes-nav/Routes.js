@@ -9,7 +9,7 @@ import SignupForm from "../auth/SignupForm";
 import UpdateProfileForm from "../profile/UpdateProfileForm";
 import PrivateRoute from "./PrivateRoute";
 
-const Routes = ({ login, signup }) => {
+const Routes = ({ login, signup, update }) => {
   return (
     <Switch>
       <Route exact path="/">
@@ -31,7 +31,7 @@ const Routes = ({ login, signup }) => {
         <JobList />
       </PrivateRoute>
       <PrivateRoute path="/profile">
-        <UpdateProfileForm />
+        <UpdateProfileForm update={update} />
       </PrivateRoute>
       <Redirect to="/" />
     </Switch>

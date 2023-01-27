@@ -9,6 +9,7 @@ import jwt from "jsonwebtoken";
 function App() {
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("jobly-token"));
+  const [userWasUpdated, setUserWasUpdated] = useState(false);
 
   useEffect(() => {
     const getCurrUser = async () => {
@@ -19,17 +20,19 @@ function App() {
           const user = await JoblyApi.getCurrentUser(username);
           setCurrUser(user);
           localStorage.setItem("jobly-token", token);
+          console.log("here");
         } catch (error) {
           console.log(error);
         }
       }
     };
     getCurrUser();
-  }, [token]);
+    setUserWasUpdated(false);
+  }, [token, userWasUpdated]);
 
   const login = async ({ username, password }) => {
     try {
-      const token = await JoblyApi.login(username, password);
+      const token = await JoblyApi.login({ username, password });
       setToken(token);
     } catch (error) {
       return { message: error };
@@ -38,13 +41,13 @@ function App() {
 
   const signup = async ({ username, password, firstName, lastName, email }) => {
     try {
-      const token = await JoblyApi.signup(
+      const token = await JoblyApi.signup({
         username,
         password,
         firstName,
         lastName,
         email
-      );
+      });
       setToken(token);
     } catch (error) {
       return { message: error };
@@ -62,11 +65,20 @@ function App() {
     }
   };
 
+  const updateProfile = async data => {
+    try {
+      await JoblyApi.updateUserProfile(data);
+      setUserWasUpdated(true);
+    } catch (error) {
+      return { message: error };
+    }
+  };
+
   return (
     <div className="App">
       <UserContext.Provider value={currUser}>
         <NavBar logout={logout} />
-        <Routes login={login} signup={signup} />
+        <Routes login={login} signup={signup} update={updateProfile} />
       </UserContext.Provider>
     </div>
   );
