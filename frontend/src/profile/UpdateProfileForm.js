@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import useFormFields from "../hooks/useFormFields";
 import UserContext from "../auth/UserContext";
+import "../auth/Form.css";
 
 const UpdateProfileForm = ({ update }) => {
   const { username, firstName, lastName, email } = useContext(UserContext);
@@ -18,7 +19,7 @@ const UpdateProfileForm = ({ update }) => {
   };
 
   return (
-    <main>
+    <main className="Form">
       <h1>Profile</h1>
       <form onSubmit={handleSubmit}>
         <label>Username</label>

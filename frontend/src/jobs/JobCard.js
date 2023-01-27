@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-
 import UserContext from "../auth/UserContext";
+import "./Job.css";
 
 const JobCard = ({ job, apply }) => {
   const { applications, username } = useContext(UserContext);

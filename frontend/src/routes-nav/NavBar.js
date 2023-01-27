@@ -13,25 +13,41 @@ const NavBar = ({ logout }) => {
   };
   return (
     <div className="NavBar">
-      <div className="NavBar-logo">
-        <NavLink to="/">Jobly</NavLink>
-      </div>
+      <nav>
+        <div className="NavBar-logo">
+          <NavLink to="/">Jobly</NavLink>
+        </div>
 
-      {!user ? (
-        <nav>
-          <NavLink to="/login">Login</NavLink>
-          <NavLink to="/signup">Signup</NavLink>
-        </nav>
-      ) : (
-        <nav>
-          <NavLink to="/companies">Companies</NavLink>
-          <NavLink to="/jobs">Jobs</NavLink>
-          <NavLink to="/profile">Profile</NavLink>
-          <button onClick={handleLogout} className="logout-btn">
-            Log out {user.username}
-          </button>
-        </nav>
-      )}
+        <ul className="NavBar-links">
+          {!user ? (
+            <>
+              <li>
+                <NavLink to="/login">Login</NavLink>
+              </li>
+              <li>
+                <NavLink to="/signup">Signup</NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/companies">Companies</NavLink>
+              </li>
+              <li>
+                <NavLink to="/jobs">Jobs</NavLink>
+              </li>
+              <li>
+                <NavLink to="/profile">Profile</NavLink>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="logout-btn">
+                  Log out {user.username}
+                </button>
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
     </div>
   );
 };

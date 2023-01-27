@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "../api/api";
-
 import JobCard from "../jobs/JobCard";
+import "./Company.css";
 
 const CompanyDetail = ({ apply }) => {
   const { handle } = useParams();
@@ -30,9 +30,11 @@ const CompanyDetail = ({ apply }) => {
 
   return (
     <main className="CompanyDetail">
-      <h3>{company.name}</h3>
-      <p>{company.description}</p>
-      <div>
+      <div className="CompanyDetail-info">
+        <h3>{company.name}</h3>
+        <p>{company.description}</p>
+      </div>
+      <div className="CompanyDetail-list">
         {company.jobs.map(job => (
           <div key={job.id}>
             <JobCard job={job} apply={apply} />

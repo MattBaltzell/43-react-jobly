@@ -10,6 +10,7 @@ function App() {
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("jobly-token"));
   const [userWasUpdated, setUserWasUpdated] = useState(false);
+  
 
   useEffect(() => {
     const getCurrUser = async () => {
@@ -87,12 +88,14 @@ function App() {
     <div className="App">
       <UserContext.Provider value={currUser}>
         <NavBar logout={logout} />
-        <Routes
-          login={login}
-          signup={signup}
-          update={updateProfile}
-          apply={apply}
-        />
+        <div className="container">
+          <Routes
+            login={login}
+            signup={signup}
+            update={updateProfile}
+            apply={apply}
+          />
+        </div>
       </UserContext.Provider>
     </div>
   );

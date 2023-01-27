@@ -1,0 +1,52 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Form h1 {
+  color: #fff;
+}
+
+.Form form {
+  display: flex;
+  width: 100%;
+  max-width: 30rem;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1.1rem 1rem;
+  border-radius: 4px;
+}
+
+.Form label {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: rgb(40, 40, 40);
+}
+
+.Form input {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 0.9rem;
+  color: #333;
+}
+
+.Form input:disabled {
+  color: #aaa;
+}
+
+.Form button {
+  font-size: 1rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #fff;
+  background-color: rgb(19, 159, 253);
+  transition: all 0.3s;
+}
+
+.Form button:hover {
+  background-color: rgb(99, 185, 241);
+}

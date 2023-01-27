@@ -3,6 +3,7 @@ import Search from "../common/Search";
 import CompanyCard from "./CompanyCard";
 import { Link } from "react-router-dom";
 import JoblyApi from "../api/api";
+import "./Company.css";
 
 const CompanyList = () => {
   const [companies, setCompanies] = useState([]);

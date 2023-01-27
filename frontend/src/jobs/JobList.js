@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Search from "../common/Search";
 import JobCard from "./JobCard";
 import JoblyApi from "../api/api";
+import "./Job.css";
 
 const JobList = ({ apply }) => {
   const [jobs, setJobs] = useState([]);

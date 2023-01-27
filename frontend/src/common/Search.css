@@ -1,0 +1,37 @@
+.Search {
+  margin: 2rem 0;
+}
+
+.Search form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 40rem;
+  gap: 0.5rem;
+}
+
+.Search input,
+.Search button {
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.Search input {
+  border: 1px solid #ccc;
+  color: #333;
+  width: 100%;
+}
+
+.Search button {
+  border: none;
+  color: #fff;
+  background-color: rgb(19, 159, 253);
+  transition: all 0.3s;
+}
+
+.Search button:hover {
+  background-color: rgb(99, 185, 241);
+}

@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+import "./Home.css";
 
 const Home = () => {
   const user = useContext(UserContext);
 
   return (
-    <main>
+    <main className="Home">
       <h1>Jobly</h1>
       <p>All the jobs in one convenient place</p>
 

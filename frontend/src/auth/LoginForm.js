@@ -1,6 +1,7 @@
 import React from "react";
 import useFormFields from "../hooks/useFormFields";
 import { useHistory } from "react-router-dom";
+import "./Form.css";
 
 const LoginForm = ({ login }) => {
   const INITIAL_STATE = { username: "testuser", password: "password" };
@@ -16,7 +17,7 @@ const LoginForm = ({ login }) => {
   };
 
   return (
-    <main>
+    <main className="Form">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
